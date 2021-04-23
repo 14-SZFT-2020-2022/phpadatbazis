@@ -46,23 +46,16 @@ echo $tabla;
             <div class='col-6'>
             <p>2. Feladat: Listázd ki a magyarországi ügyfeleket életkoruk szerint! Kezdd a legfiatalabbal!</p>
 <?php
-$sql = 'SELECT `nev` FROM `ugyfel` WHERE `orsz` = "H";';
+$sql = 'SELECT `nev` AS `Név`, 2021 - `ugyfel`.`szulev` AS `Életkor` FROM `ugyfel`  WHERE `orsz` = "H" ORDER BY `Életkor` ASC;';
 
 $result = $conn -> query($sql);
 
-$tabla = '<table class="table table-dark">';
-$tabla .= '<tr class="bg-success"><th>Név</th></tr>';
+$tabla = '<table class="table table-light">';
+$tabla .= '<tr class="bg-success"><th>Név</th><th>Életkor</th></tr>';
 if ($result -> num_rows > 0) {
     while ($row = $result -> fetch_assoc()) {
-        /*
-            Első sor (rekord)
-            $row = ['azon' => 1, 'nev' => 'Buda Jenő', 'szulev' => 1982, 'irszam' => 1026, 'orsz' => 'H' ]
-            és így tovább az adatbázis tábla minden sorára (rekordjára) megcsinálva ezt.
-        */
-        $tabla .= '<tr><td>' . $row['nev'] . '</td></tr>'; 
-        // $tabla .= '<td>' . $row['irszam'] .' </td>'; 
-        // $tabla .= '<td>' . $row['szulev'] .' </td></tr>'; 
-        
+        $tabla .= '<tr><td>' . $row['Név'] . '</td>'; 
+        $tabla .= '<td>' . $row['Életkor'] . '</td></tr>'; 
     }
 }
 
