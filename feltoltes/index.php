@@ -26,6 +26,7 @@
             <input type='number' class='form-control' name='szulev' id='szulev' min='1973' max='2021' placeholder='2021' />
         </div>
         <button type='submit' class='btn btn-primary'>Feltölt</button>
+        <button type='submit' formaction='./lekerdez.php' formmethod='get' class='btn btn-danger'>Lekérdez</button>
     </form>
     <h3>Eredmény táblázat</h3>
     <form action='./kiiratas.php' method='get'>
